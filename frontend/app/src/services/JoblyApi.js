@@ -9,7 +9,7 @@ class JoblyApi {
       "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
       "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U");
   
-      console.debug("API Call:", endpoint, paramsOrData, verb);
+      //console.debug("API Call:", endpoint, paramsOrData, verb);
   
       try {
         return (await axios({
@@ -32,10 +32,53 @@ class JoblyApi {
       let res = await this.request(`companies/${handle}`);
       return res.company;
     }
+
+    static async getCompanies(){
+      let res = await this.request("companies");
+      return res.companies;
+    }
+
+
+
+
+
+
+
+    //Get a single job corresponding to jobid
+    static async getJob(jobid){
+      let res = await this.request(`jobs/${jobid}`);
+      return res.job;
+    }
+    //Get list of all jobs
     static async getJobs(){
       let res = await this.request('jobs');
-      console.log(res.jobs)
       return res.jobs;
+    }
+
+    //Post a new Job
+    static async createJob(jobdata){
+      let res = await this.request('jobs',this.verb="post",this.paramsOrData=jobdata)
+      return res.status
+    }
+
+    //Patch or Update an existing Job corresponding to jobid
+    static async updateJob(jobid){
+      let res = await this.request(`jobs/${jobid}`,this.verb="patch")
+      return res.job
+
+    }
+
+    //Delete a job corresponding to jobid
+    static async deleteJob(jobid){
+      let res = await this.request(`jobs/${jobid}`,this.verb="delete");
+      return res.message;
+
+    }
+
+    //Apply For a Job corresponding to jobid
+    static async applyJob(jobid){
+      let res = await this.request(`jobs/${jobid}/apply`,this.verb="post");
+      return res.message;
     }
 
     static async login(){
@@ -45,3 +88,5 @@ class JoblyApi {
   }
   
 export default JoblyApi
+
+
