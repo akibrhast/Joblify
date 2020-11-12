@@ -1,8 +1,9 @@
-import JobCard from "../components/JobCard"
+import JobCard from "./JobCard"
 import Container from 'react-bootstrap/Container'
-import JoblyApi from '../services/JoblyApi'
-
+import JoblyApi from '../../services/JoblyApi'
+import PageLayout from '../PageLayout'
 import { useEffect, useState } from "react";
+import SearchForm from "../Search";
 
 
 function  Jobs() {
@@ -20,16 +21,17 @@ function  Jobs() {
         get_data();
     },[]);
     if(loading){
-        return(<h1>It is loading</h1>)
+        return(<PageLayout loading={true}/>)
     }
     return(
-        <Container fluid  className="mt-5">
-        {response}
-        </Container>
-        );
-
-
-    
+        <PageLayout
+            search={
+                <SearchForm/>
+            }
+            listcontainer={
+                response
+            }/>
+            );    
 }
 
 export default Jobs

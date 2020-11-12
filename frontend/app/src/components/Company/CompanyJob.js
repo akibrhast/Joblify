@@ -1,6 +1,6 @@
-import JobCard from "../components/JobCard"
+import JobCard from "../Job/JobCard"
 import Container from 'react-bootstrap/Container'
-import JoblyApi from '../services/JoblyApi'
+import JoblyApi from '../../services/JoblyApi'
 import { useParams } from "react-router-dom";
 
 

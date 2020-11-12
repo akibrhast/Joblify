@@ -1,6 +1,6 @@
-import CompanyCard from "../components/CompanyCard"
+import CompanyCard from "./CompanyCard"
 import Container from 'react-bootstrap/Container'
-import JoblyApi from '../services/JoblyApi'
+import JoblyApi from '../../services/JoblyApi'
 
 import { useEffect, useState } from "react";
 

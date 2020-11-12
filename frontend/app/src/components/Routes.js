@@ -1,9 +1,9 @@
-import Home from '../pages/Home';
-import Jobs from '../pages/Jobs';
-import Companies from '../pages/Companies';
-import Company from '../pages/Company';
-import Profile from '../pages/Profile';
-
+import Home from './Home';
+import Jobs from './Job/Jobs';
+import Companies from './Company/Companies';
+import Company from './Company/CompanyJob';
+import Profile from './Profile';
+ 
 import {
   BrowserRouter as Router,
   Switch,
