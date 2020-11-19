@@ -10,6 +10,7 @@ class SearchForm extends React.Component {
 
     render(){
         return(
+
             <Form>
                 <Form.Group controlId="generic-search">
                 <Form.Control placeholder="Search..." />

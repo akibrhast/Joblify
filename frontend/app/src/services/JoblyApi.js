@@ -4,12 +4,12 @@ import axios from 'axios';
 
 class JoblyApi {
     static async request(endpoint, paramsOrData = {}, verb = "get") {
-      paramsOrData._token = ( // for now, hardcode token for "testing"
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
-      "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
-      "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U");
-  
-      //console.debug("API Call:", endpoint, paramsOrData, verb);
+      // paramsOrData._token = ( // for now, hardcode token for "testing"
+      // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
+      // "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
+      // "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U");
+      paramsOrData._token = localStorage.getItem('_token');
+      console.debug("API Call:", endpoint, paramsOrData, verb);
   
       try {
         return (await axios({
@@ -81,9 +81,30 @@ class JoblyApi {
       return res.message;
     }
 
-    static async login(){
-      let res = await this.request(`/login`);
-      return res;
+    static async login(x){
+      try{
+      let res = await this.request(`login`,this.paramsOrData=x,this.verb="post");
+      return res.token;
+      }
+      catch(err){
+        throw err;
+      }
+    }
+
+    static async register(x){
+      try{
+        let res = await this.request('users',this.paramsOrData=x,this.verb="post");
+        return res;
+      }
+      catch(err){
+        console.debug(err)
+      }
+
+    }
+
+    static async getUserInfo(username){
+      let res = await this.request(`users/${username}`)
+      return res
     }
   }
   

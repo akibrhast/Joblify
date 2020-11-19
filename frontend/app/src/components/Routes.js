@@ -2,7 +2,10 @@ import Home from './Home';
 import Jobs from './Job/Jobs';
 import Companies from './Company/Companies';
 import Company from './Company/CompanyJob';
-import Profile from './Profile';
+import Profile from './Profile/Profile'
+import RegistrationForm from './Forms/RegistrationForm';
+import LoginForm from './Forms/Loginform';
+
  
 import {
   BrowserRouter as Router,
@@ -11,19 +14,20 @@ import {
 } from "react-router-dom";
 
 const Routes = () =>(
+
     <Router>
         <Switch>
             <Route exact path="/">
                 <Home />
             </Route>
             <Route exact path="/login">
-                <Home />
+                <LoginForm />
             </Route>
             <Route exact path="/logout">
                 <Home/>
             </Route>
             <Route exact path="/register">
-                <Home />
+                <RegistrationForm />
             </Route>
             <Route exact path="/jobs">
                 <Jobs />

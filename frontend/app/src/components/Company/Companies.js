@@ -1,6 +1,9 @@
-import CompanyCard from "./CompanyCard"
-import Container from 'react-bootstrap/Container'
-import JoblyApi from '../../services/JoblyApi'
+import CompanyCard from "./CompanyCard";
+import JoblyApi from '../../services/JoblyApi';
+import PageLayout from '../PageLayout';
+import SearchForm from "../Search";
+
+
 
 import { useEffect, useState } from "react";
 
@@ -20,12 +23,16 @@ function  Companies() {
         get_data();
     },[]);
     if(loading){
-        return(<h1>It is loading</h1>)
+        return(<PageLayout loading={true}/>)
     }
     return(
-        <Container fluid className="mt-5">
-        {response}
-        </Container>
+        <PageLayout
+            search={
+                <SearchForm/>
+            }
+            listcontainer={
+                response
+            }/>
         );
 
 

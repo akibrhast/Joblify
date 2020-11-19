@@ -2,6 +2,7 @@ import React from 'react';
 
  
 function PageLayout(props) {
+
     if(props.loading){
         return(
             <div class="d-flex justify-content-center">
@@ -11,18 +12,32 @@ function PageLayout(props) {
             </div>
         )
     }
+
     return(
-        <div className="container-fluid">
+        <div className="container">
+            {props.search &&          
+                <div className="row">
+                    <div className="col search-container">
+                        {props.search}
+                    </div>
+                </div>
+            }
+
+            {props.listcontainer &&
+                <div className="row">
+                    <div className="col list-container">
+                        {props.listcontainer}
+                    </div>
+                </div>
+            }
+            {props.profile &&
             <div className="row">
-                <div className="col search-container">
-                    {props.search? props.search:""}
+                <div className="col profile-container">
+                {props.profile}
                 </div>
             </div>
-            <div className="row">
-                <div className="col list-container">
-                    {props.listcontainer?props.listcontainer:""}
-                </div>
-            </div>
+            }
+
         </div>
     )
 }

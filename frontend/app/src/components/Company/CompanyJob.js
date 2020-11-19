@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 
 
 import { useEffect, useState } from "react";
+import PageLayout from "../PageLayout";
 
 
 function  Company() {
@@ -24,12 +25,13 @@ function  Company() {
         get_data();
     },[]);
     if(loading){
-        return(<h1>It is loading</h1>)
+        return(<PageLayout loading={true}/>)
     }
     return(
-        <Container fluid  className="mt-5">
-        {response}
-        </Container>
+        <PageLayout
+            listcontainer = {response}
+        />
+
         );
 
 
