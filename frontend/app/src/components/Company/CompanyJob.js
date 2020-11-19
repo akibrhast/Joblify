@@ -1,10 +1,9 @@
 import JobCard from "../Job/JobCard"
-import Container from 'react-bootstrap/Container'
 import JoblyApi from '../../services/JoblyApi'
 import { useParams } from "react-router-dom";
 
 
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import PageLayout from "../PageLayout";
 
 

@@ -10,39 +10,42 @@ import LoginForm from './Forms/Loginform';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,Redirect
 } from "react-router-dom";
 
-const Routes = () =>(
+const Routes = () =>{
+    const TOKEN_KEY = '_token';
 
+    const isLogin = () => {
+        if (localStorage.getItem(TOKEN_KEY)) {
+            return true;
+        }}
+return(
     <Router>
         <Switch>
             <Route exact path="/">
                 <Home />
             </Route>
             <Route exact path="/login">
-                <LoginForm />
-            </Route>
-            <Route exact path="/logout">
-                <Home/>
+                {isLogin() ? <Redirect to="/jobs" /> : <LoginForm/>}
             </Route>
             <Route exact path="/register">
-                <RegistrationForm />
+                {isLogin() ? <Redirect to="/jobs" /> :  <RegistrationForm />}
             </Route>
             <Route exact path="/jobs">
-                <Jobs />
+                {isLogin() ?  <Jobs />: <Redirect to="/login" /> }
             </Route>
             <Route exact path="/companies">
-                <Companies/>
+                {isLogin() ?   <Companies />  :<Redirect to="/login" />}
             </Route>
             <Route exact path="/companies/:handle">
-                <Company/>
+                {isLogin() ? <Company />  :  <Redirect to="/login" /> }
             </Route>
             <Route exact path="/profile">
-                <Profile/>
+                {isLogin() ?<Profile />  :   <Redirect to="/login" />}
             </Route>
         </Switch>
-    </Router>
-);
+    </Router>)
+};
 
 export default Routes;

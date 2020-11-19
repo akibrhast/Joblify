@@ -9,7 +9,7 @@ import Routes from './components/Routes';
 const App = () => (
   <Fragment>
     
-    <NavigationBar />
+    {/* <NavigationBar /> */}
     <Routes/>
   </Fragment>
   

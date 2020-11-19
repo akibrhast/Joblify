@@ -1,45 +1,38 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import {Redirect } from "react-router-dom";
+import NavigationBar from '../NavigationBar'
+import {useHistory} from 'react-router-dom'
 
 import JoblyApi from '../../services/JoblyApi';
 
 
 export default function LoginForm(){
+    let history = useHistory();
+
+
     const { register, handleSubmit, errors } = useForm();
     const [apierror, setError] = useState(null);
+
     const onSubmit = async data => {
         try {
             const token = await JoblyApi.login(data);
             localStorage.setItem('_token', token);
-            localStorage.setItem('user',data.username);      
+            localStorage.setItem('user',data.username);
+            history.push("/")
+
         }
         catch(err){
                 setError(err)
                 console.log(err)
         }
     }
-
-
-
-//   const onSubmit = async data => {
-
-    // login
-    // .then((e) => {
-    //     console.log(e)
-    //     if(e.token){
-    //     localStorage.setItem('_token', e.token);
-    // }})
-    // .catch((err) =>{
-    //     apiError = err[0]
-    //     console.log("errors",err[0])
-    // })
-  
-
-
   return(
-    <div className="container">
+      
+    <React.Fragment>
+        
+        <NavigationBar/>
+        <div className="container mt-5">
     <div className="row">
         <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
             <h1 className="">Login</h1>
@@ -66,5 +59,7 @@ export default function LoginForm(){
         </div>
     </div>
 </div>
+    </React.Fragment>
+
   )
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import NavigationBar from '../NavigationBar'
 
 import JoblyApi from '../../services/JoblyApi';
 
@@ -16,7 +17,9 @@ export default function RegistrationForm() {
   //console.log(watch()); // watch input value by passing the name of it
 
   return (
-    <div className="container">
+    <React.Fragment>
+        <NavigationBar/>
+        <div className="container mt-5">
     <div className="row">
         <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
             <h1 className="">Registration</h1>
@@ -48,6 +51,9 @@ export default function RegistrationForm() {
         </div>
     </div>
 </div>
+
+    </React.Fragment>
+
 
 
   );

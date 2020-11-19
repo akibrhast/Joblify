@@ -1,7 +1,7 @@
 import React from 'react';
-
- 
+import NavigationBar from './NavigationBar'
 function PageLayout(props) {
+
 
     if(props.loading){
         return(
@@ -14,7 +14,11 @@ function PageLayout(props) {
     }
 
     return(
-        <div className="container">
+    
+        
+        <React.Fragment>
+            <NavigationBar/>
+            <div className="container mt-5">
             {props.search &&          
                 <div className="row">
                     <div className="col search-container">
@@ -39,6 +43,10 @@ function PageLayout(props) {
             }
 
         </div>
+            
+
+        </React.Fragment>
+
     )
 }
 export default PageLayout
