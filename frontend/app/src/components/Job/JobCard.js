@@ -8,6 +8,8 @@ import { useState } from "react";
 function JobCard (props){
   const boxStyle = {boxShadow: "2px 2px 6px 3px #121252", background:"#131619"}
   const [jobstate, setJobState] = useState(props.job.state);
+  const buttonClass = `font-weight-bold text-uppercase float-right btn btn-${jobstate?"secondary":"primary"}` 
+
 
   async function ApplyJob(id){
     try{
@@ -25,11 +27,16 @@ function JobCard (props){
   }
   return(
     <Card className="mb-5 text-white" id={props.job.id} style={boxStyle}>
+      <div class="card-header border-white text-capitalize"> {props.job.title} | {props.job.company_handle} </div>
     <Card.Body>
-      <Card.Title>{props.job.title} at <i>{props.job.company_handle}</i></Card.Title>
         {props.job.salary && <p>Salary:{props.job.salary}</p> }
         {props.job.equity && <p>Equity:{props.job.equity}</p> }
-        <button onClick={() => ApplyJob(props.job.id)} disabled={jobstate}> Apply </button>
+        <button onClick={() => ApplyJob(props.job.id)} 
+                disabled={jobstate} 
+                type="button" 
+                className={buttonClass}> 
+                  {jobstate? "Applied":"Apply"} 
+        </button>
     </Card.Body>
   </Card>);
 };

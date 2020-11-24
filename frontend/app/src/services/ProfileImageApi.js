@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-class JoblyApi {
+class RoboHashApi {
     static async request(endpoint, paramsOrData = {}, verb = "get") {
       
         console.debug("API Call:", endpoint, paramsOrData, verb);
