@@ -40,12 +40,12 @@ export default function LoginForm(){
                 <form action="" className="justify-content-center" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                         <label className="sr-only">Username</label>
-                        <input name="username" type="text" className="form-control" placeholder="JaneDoe74" ref={register({ required: true })}/>
+                        <input name="username" type="text" className="form-control" placeholder="username" ref={register({ required: true })}/>
                         {errors.username && "Username is required"}
                     </div>
                     <div className="form-group">
                         <label className="sr-only">Password</label>
-                        <input name="password" type="password" className="form-control" ref={register({ required: true })}/>
+                        <input name="password" type="password" placeholder="password" className="form-control" ref={register({ required: true })}/>
                         {errors.password && "Password is required"}
                     </div>
                     <div className="apiErrors">

@@ -1,7 +1,7 @@
 import CompanyCard from "./CompanyCard";
-import JoblyApi from '../../services/JoblyApi';
-import PageLayout from '../PageLayout';
-import SearchForm from "../Search";
+import JoblyApi    from '../../services/JoblyApi';
+import PageLayout  from '../PageLayout';
+import SearchForm  from "../Forms/SearchForm";
 
 
 
@@ -22,17 +22,30 @@ function  Companies() {
         }
         get_data();
     },[]);
+
+
+    const searchParam = (data) => {
+        setLoading(true)
+        const get_data = async() =>{
+            const result = await JoblyApi.searchComnpanies(data);
+            const result_list = result.map((r) => 
+                <CompanyCard company={r} key={r.handle}/>
+            )
+            setResponse(result_list);
+            setLoading(false)
+        }
+        get_data();
+
+    }
+    
+
     if(loading){
         return(<PageLayout loading={true}/>)
     }
     return(
-        <PageLayout
-            search={
-                <SearchForm/>
-            }
-            listcontainer={
-                response
-            }/>
+        <PageLayout search={<SearchForm setSearchKey={(d) => searchParam(d)} 
+                                        searchPlaceHolder="Search By Company Name..."/>}
+                    listcontainer={response}/>
         );
 
 

@@ -1,13 +1,9 @@
 import React from 'react';
+import isLogin from './isLogin'
 import { Route, Redirect } from 'react-router-dom';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
-    const TOKEN_KEY = '_token';
 
-    const isLogin = () => {
-        if (localStorage.getItem(TOKEN_KEY)) {
-            return true;
-        }}
     return (
 
         // Show the component only when the user is logged in

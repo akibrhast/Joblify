@@ -5,7 +5,7 @@ import Company from './Company/CompanyJob';
 import Profile from './Profile/Profile'
 import RegistrationForm from './Forms/RegistrationForm';
 import LoginForm from './Forms/Loginform';
-
+import isLogin from './isLogin'
  
 import {
   BrowserRouter as Router,
@@ -14,12 +14,7 @@ import {
 } from "react-router-dom";
 
 const Routes = () =>{
-    const TOKEN_KEY = '_token';
 
-    const isLogin = () => {
-        if (localStorage.getItem(TOKEN_KEY)) {
-            return true;
-        }}
 return(
     <Router>
         <Switch>

@@ -36,9 +36,7 @@ function PageLayout(props) {
             }
             {props.profile &&
             <div className="row">
-                <div className="col profile-container">
                 {props.profile}
-                </div>
             </div>
             }
 

@@ -1,31 +1,23 @@
 import React from 'react';
-import Home from './Home';
-import Jobs from './Job/Jobs';
-import Companies from './Company/Companies';
-import Company from './Company/CompanyJob';
-import Profile from './Profile/Profile'
-import RegistrationForm from './Forms/RegistrationForm';
-import LoginForm from './Forms/Loginform';
-import PrivateRoute from './PrivateRoute';
+import isLogin from './isLogin'
 
 function NavigationBar(){
-  const TOKEN_KEY = '_token';
+  const navStyle =     {boxShadow: "0 0 12px #288e68"}
 
-  const isLogin = () => {
-      if (localStorage.getItem(TOKEN_KEY)) {
-          return true;
-      }}
+
   function logout(){
     localStorage.clear();
     console.debug("Should Redirect to homepage")
   }
-  const loggedInComponents=``
-  const loggedOutComponents = ``
+
     return (
     
-  <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+  <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style={navStyle}>
     <a className="navbar-brand" href="/">Jobly</a>
-    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="nav navbar-nav ml-auto">
 
             {isLogin()? 
@@ -45,6 +37,7 @@ function NavigationBar(){
 
 
       </ul>
+    </div>
 
   </nav>
     

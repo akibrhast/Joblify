@@ -38,6 +38,11 @@ class JoblyApi {
       return res.companies;
     }
 
+    static async searchComnpanies(searchParam){
+      let res = await this.request('companies',this.paramsOrData={search:searchParam});
+      return res.companies;
+    }
+
 
 
 
@@ -52,6 +57,11 @@ class JoblyApi {
     //Get list of all jobs
     static async getJobs(){
       let res = await this.request('jobs');
+      return res.jobs;
+    }
+
+    static async searchJobs(searchParam){
+      let res = await this.request('jobs',this.paramsOrData={search:searchParam});
       return res.jobs;
     }
 
@@ -77,7 +87,10 @@ class JoblyApi {
 
     //Apply For a Job corresponding to jobid
     static async applyJob(jobid){
-      let res = await this.request(`jobs/${jobid}/apply`,this.verb="post");
+
+      let res = await this.request(`jobs/${jobid}/apply`,
+                                    this.paramsOrData={username:localStorage.getItem("user")},
+                                    this.verb="post");
       return res.message;
     }
 
